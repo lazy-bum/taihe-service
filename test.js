@@ -1,7 +1,7 @@
 var ModbusRTU = require("modbus-serial");
 var client = new ModbusRTU();
-const hostAddress = "192.168.31.9";
-const hostPort = { port: 503 };
+const hostAddress = "10.143.253.85";
+const hostPort = { port: 502 };
 
 async function modbusConnect() {
   await client.connectTCP(hostAddress, hostPort)
