@@ -1,7 +1,7 @@
 var ModbusRTU = require("modbus-serial");
 var client = new ModbusRTU();
 
-client.connectTCP("15.18.200.23", { port: 502 });
+client.connectTCP("192.168.31.9", { port: 503 });
 
 setInterval(function () {
   client.readHoldingRegisters(22, 10, function (err, data) {
