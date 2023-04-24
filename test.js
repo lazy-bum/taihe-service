@@ -1,15 +1,16 @@
-const net = require('net');
-const Modbus = require('jsmodbus');
+var ModbusRTU = require("modbus-serial");
+var client = new ModbusRTU();
 
-// 创建TCP连接
-const socket = new net.Socket();
-const client = new Modbus.client.TCP(socket, 1);
+client.connectTCP("15.18.200.23", { port: 502 });
 
-socket.connect(503, '192.168.31.9', function () {
-  client.readInputRegisters(0, 10).then(function (resp) {
-    console.log(resp);
-    socket.destroy();
-  }).catch(function () {
-    socket.destroy();
+setInterval(function () {
+  client.readHoldingRegisters(22, 10, function (err, data) {
+    // 获取当前时间
+    //moment.locale('zh-cn');
+    console.log("----------------------------------------------------------------------");
+    console.log(data?.data);
+    console.log("----------------------------------------------------------------------");
+
+    //console.log(data.data);
   });
-});
+}, 5000);
