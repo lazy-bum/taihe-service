@@ -4,6 +4,12 @@ dependencies:
   egg:
     specifier: ^3
     version: 3.0.0
+  egg-cors:
+    specifier: ^2.2.3
+    version: 2.2.3
+  egg-mysql:
+    specifier: ^4.0.0
+    version: 4.0.0
   egg-scripts:
     specifier: ^2
     version: 2.0.0
@@ -387,6 +393,13 @@ packages:
       '@jridgewell/resolve-uri': 3.1.1
       '@jridgewell/sourcemap-codec': 1.4.15
     dev: true
+
+  /@koa/cors@3.4.3:
+    resolution: {integrity: sha512-WPXQUaAeAMVaLTEFpoq3T2O1C+FstkjJnDQqy95Ck1UdILajsRhu6mhJ8H2f4NFPRBoCNN+qywTJfq/gGki5mw==}
+    engines: {node: '>= 8.0.0'}
+    dependencies:
+      vary: 1.1.2
+    dev: false
 
   /@mrmlnc/readdir-enhanced@2.2.1:
     resolution: {integrity: sha512-bPHp6Ji8b41szTOcaP63VlnbbO5Ny6dwAATtY6JTjh5N2OLrb5Qk/Th5cRkRQhkWCt+EJsYrNB0MiL+Gpn6e3g==}
@@ -847,6 +860,13 @@ packages:
       json-schema-traverse: 0.4.1
       uri-js: 4.4.1
     dev: true
+
+  /ali-rds@5.1.2:
+    resolution: {integrity: sha512-YI0jWDiDzmhbZ9i5MPWky8Fc6Eg+s6vTt7BdomrGVtE1dV+Ikzb5PjdxfvGyTnHD89TdjTcV6KriM1+0h7Gp1g==}
+    engines: {node: '>= 14.17.0'}
+    dependencies:
+      mysql: 2.18.1
+    dev: false
 
   /amdefine@1.0.1:
     resolution: {integrity: sha512-S2Hw0TtNkMJhIabBwIojKL9YHO5T0n5eNqWJ7Lrlel/zDbftQpxpapi8tZs3X1HWa+u+QeydGmzzNU0m09+Rcg==}
@@ -1865,6 +1885,10 @@ packages:
       mixin-deep: 1.3.2
       pascalcase: 0.1.1
     dev: true
+
+  /bignumber.js@9.0.0:
+    resolution: {integrity: sha512-t/OYhhJ2SD+YGBQcjY8GzzDHEk9f3nerxjtfa6tlMXfe7frs/WozhvCNoGvpM0P3bNf3Gq5ZRMlGr5f3r4/N8A==}
+    dev: false
 
   /binary-extensions@2.2.0:
     resolution: {integrity: sha512-jDctJ/IVQbZoJykoeHbhXpOlNBqGNcwXJKJog42E5HDPUwQTSdjCHdihjj0DlnheQ7blbT6dHOafNAiS8ooQKA==}
@@ -2907,6 +2931,13 @@ packages:
       - supports-color
     dev: false
 
+  /egg-cors@2.2.3:
+    resolution: {integrity: sha512-MLG4pQekZpycLXR45ZAIgFpFYshosBxu1CMdhXAzqPzxUn0xI21gVzqLqcxUrzzulaErCwG6qMXaS1eFyj9u2w==}
+    engines: {node: '>=8.0.0'}
+    dependencies:
+      '@koa/cors': 3.4.3
+    dev: false
+
   /egg-development@2.7.0:
     resolution: {integrity: sha512-vPkC+Wngm/a48bj0rXpvTOmSjslBnygCsjBG7qahJ1PuCs0f10KrOGOGY9JzOW6KpfjKSPb+Y21mpzkxBJ9q2Q==}
     engines: {node: '>=8.0.0'}
@@ -3005,6 +3036,13 @@ packages:
       mz-modules: 2.1.0
       stream-wormhole: 1.1.0
       uuid: 8.3.2
+    dev: false
+
+  /egg-mysql@4.0.0:
+    resolution: {integrity: sha512-PvGAyd2sYPswbZql5u5tSWz2T+RU7kKcMQ21Z4v8yoyXkBJ/gLCzHjwm/J4pUgEuELiXrr2IPUsp/rC0j3KxNw==}
+    engines: {node: '>=16.0.0'}
+    dependencies:
+      ali-rds: 5.1.2
     dev: false
 
   /egg-onerror@2.2.0:
@@ -5616,6 +5654,16 @@ packages:
     hasBin: true
     dev: false
 
+  /mysql@2.18.1:
+    resolution: {integrity: sha512-Bca+gk2YWmqp2Uf6k5NFEurwY/0td0cpebAucFpY/3jhrwrVGuxU2uQFCHjU19SJfje0yQvi+rVWdq78hR5lig==}
+    engines: {node: '>= 0.6'}
+    dependencies:
+      bignumber.js: 9.0.0
+      readable-stream: 2.3.7
+      safe-buffer: 5.1.2
+      sqlstring: 2.3.1
+    dev: false
+
   /mz-modules@2.1.0:
     resolution: {integrity: sha512-sjk8lcRW3vrVYnZ+W+67L/2rL+jbO5K/N6PFGIcLWTiYytNr22Ah9FDXFs+AQntTM1boZcoHi5qS+CV1seuPog==}
     engines: {node: '>=6.0.0'}
@@ -6391,6 +6439,18 @@ packages:
       isarray: 0.0.1
       string_decoder: 0.10.31
 
+  /readable-stream@2.3.7:
+    resolution: {integrity: sha512-Ebho8K4jIbHAxnuxi7o42OrZgF/ZTNcsZj6nRKyUmkhLFq8CHItp/fy6hQZuZmP/n3yZ9VBUbp4zz/mX8hmYPw==}
+    dependencies:
+      core-util-is: 1.0.3
+      inherits: 2.0.4
+      isarray: 1.0.0
+      process-nextick-args: 2.0.1
+      safe-buffer: 5.1.2
+      string_decoder: 1.1.1
+      util-deprecate: 1.0.2
+    dev: false
+
   /readable-stream@2.3.8:
     resolution: {integrity: sha512-8p0AUk4XODgIewSi0l8Epjs+EVnWiK7NoDIEGU0HhE7+ZyY8D1IMY7odu5lRrFXGg71L15KG8QrPmum45RTtdA==}
     dependencies:
@@ -6908,6 +6968,11 @@ packages:
     resolution: {integrity: sha512-wD2AeVmxXRBoX44wAycgjVpMhvbwdI2aZjCkvfNcH1YqHQvJVa1duWc73OyVGJUc05fhFaTZeQ/PYsrmyH0JVA==}
     dependencies:
       through: 2.3.8
+    dev: false
+
+  /sqlstring@2.3.1:
+    resolution: {integrity: sha512-ooAzh/7dxIG5+uDik1z/Rd1vli0+38izZhGzSa34FwR7IbelPWCCKSNIl8jlL/F7ERvy8CB2jNeM1E9i9mXMAQ==}
+    engines: {node: '>= 0.6'}
     dev: false
 
   /stack-trace@0.0.10:
