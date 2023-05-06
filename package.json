@@ -7,10 +7,12 @@
     "declarations": true
   },
   "dependencies": {
+    "dayjs": "^1.11.7",
     "egg": "^3",
     "egg-cors": "^2.2.3",
     "egg-mysql": "^4.0.0",
-    "egg-scripts": "^2"
+    "egg-scripts": "^2",
+    "egg-swagger": "^1.2.2"
   },
   "devDependencies": {
     "egg-bin": "^5",
@@ -23,7 +25,7 @@
     "node": ">=16.0.0"
   },
   "scripts": {
-    "start": "egg-scripts start --daemon --title=egg-server-taihe-service",
+    "start": "egg-scripts start --title=egg-server-taihe-service",
     "stop": "egg-scripts stop --title=egg-server-taihe-service",
     "dev": "egg-bin dev",
     "debug": "egg-bin debug",
@@ -31,7 +33,10 @@
     "test-local": "egg-bin test",
     "cov": "egg-bin cov",
     "lint": "eslint .",
-    "ci": "npm run lint && npm run cov"
+    "ci": "npm run lint && npm run cov",
+    "build": "npm run build-docker-image && npm run save-docker-image",
+    "build-docker-image": "docker build -t taihe-service:v0.0.2 .",
+    "save-docker-image": "docker save -o ./build/taihe-service.v0.0.2.tar taihe-service:v0.0.2 "
   },
   "ci": {
     "version": "16, 18",
